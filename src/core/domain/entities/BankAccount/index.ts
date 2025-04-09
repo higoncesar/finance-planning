@@ -1,0 +1,40 @@
+import { Money } from '../../valueObjects/Money';
+import { Entity } from '@/core/domain/_shared/Entity';
+import { UniqueEntityId } from '@/core/domain/_shared/UniqueEntityId';
+
+export interface BankAccountProps {
+  name: string;
+  initialBalance: Money;
+  currentBalance: Money;
+  userId: UniqueEntityId;
+}
+
+export class BankAccount extends Entity<BankAccountProps> {
+  constructor(props: BankAccountProps, id?: UniqueEntityId) {
+    super(props, id);
+  }
+
+  get name() {
+    return this.props.name;
+  }
+
+  get initialBalance() {
+    return this.props.initialBalance;
+  }
+
+  get currentBalance() {
+    return this.props.currentBalance;
+  }
+
+  get userId() {
+    return this.props.userId;
+  }
+
+  setCurrentBalance(amount: Money) {
+    this.props.currentBalance = amount;
+  }
+
+  setName(name: string) {
+    this.props.name = name;
+  }
+}
