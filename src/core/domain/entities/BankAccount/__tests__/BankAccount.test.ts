@@ -5,7 +5,7 @@ import { Money } from '@/core/domain/valueObjects/Money';
 
 describe('BankAccount', () => {
   let props: BankAccountProps;
-
+  const userId = new UniqueEntityId();
   const currency = 'BRL';
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('BankAccount', () => {
       name: 'Name',
       initialBalance: Money.createFromAmount(0, currency),
       currentBalance: Money.createFromAmount(10, currency),
-      userId: new UniqueEntityId(),
+      userId,
     };
   });
 
@@ -23,6 +23,7 @@ describe('BankAccount', () => {
     const bankAccount = new BankAccount(props, id);
 
     expect(bankAccount.id).toStrictEqual(id);
+    expect(bankAccount.userId).toStrictEqual(props.userId);
     expect(bankAccount.name).toStrictEqual(props.name);
     expect(bankAccount.currentBalance).toStrictEqual(props.currentBalance);
     expect(bankAccount.initialBalance).toStrictEqual(props.initialBalance);

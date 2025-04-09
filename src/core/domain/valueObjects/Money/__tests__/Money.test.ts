@@ -3,11 +3,19 @@ import { Money } from '..';
 
 describe('Money', () => {
   const defaultCurrency = 'BRL';
+
   it('should create a Money object from amount', () => {
     const money = Money.createFromAmount(100.5, defaultCurrency);
 
     expect(money.getAmount()).toStrictEqual(100.5);
     expect(money.getCurrency()).toStrictEqual('BRL');
+  });
+
+  it('should return a Money object raw amount', () => {
+    const amount = 100.53;
+    const money = Money.createFromAmount(amount, defaultCurrency);
+
+    expect(money.getRawAmount()).toStrictEqual(amount * 100);
   });
 
   it('should add two Money objects', () => {
