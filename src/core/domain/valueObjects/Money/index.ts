@@ -45,15 +45,17 @@ export class Money extends ValueObject<MoneyProps> {
     });
   }
 
-  multiply(multiplier: number) {
-    const result = this.dinero.multiply(multiplier);
+  multiply(other: Money) {
+    this.ensureSameCurrency(other);
+    const result = this.dinero.multiply(other.getAmount());
     return new Money({
       amount: result.getAmount(),
       currency: this.getCurrency(),
     });
   }
 
-  divide(divisor: number): Money {
+  divide(other: Money) {
+    const divisor = other.getAmount();
     if (divisor === 0) {
       throw new Error('Cannot divide by zero');
     }

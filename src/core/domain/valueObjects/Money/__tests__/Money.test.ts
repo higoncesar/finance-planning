@@ -30,22 +30,27 @@ describe('Money', () => {
 
   it('should multiply a Money object', () => {
     const money = Money.createFromAmount(20, defaultCurrency);
-    const multiplied = money.multiply(3);
+    const value = Money.createFromAmount(3, defaultCurrency);
+
+    const multiplied = money.multiply(value);
 
     expect(multiplied.getAmount()).toStrictEqual(60.0);
   });
 
   it('should divide a Money object', () => {
     const money = Money.createFromAmount(100, defaultCurrency);
-    const divided = money.divide(4);
+    const value = Money.createFromAmount(4, defaultCurrency);
+
+    const divided = money.divide(value);
 
     expect(divided.getAmount()).toStrictEqual(25.0);
   });
 
   it('should throw error when dividing by zero', () => {
     const money = Money.createFromAmount(100, defaultCurrency);
+    const zeroValue = Money.createFromAmount(0, defaultCurrency);
 
-    expect(() => money.divide(0)).toThrow('Cannot divide by zero');
+    expect(() => money.divide(zeroValue)).toThrow('Cannot divide by zero');
   });
 
   it('should detect greater than', () => {
