@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { BankAccount, BankAccountProps } from '..';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
-import { Money } from '@/domain/valueObjects/Money';
+import { Money } from '@/domain/value-objects/Money';
 
 describe('BankAccount', () => {
   let props: BankAccountProps;
@@ -20,7 +20,7 @@ describe('BankAccount', () => {
   it('should create a BankAccount entity with the correct properties', () => {
     const id = new UniqueEntityId();
 
-    const bankAccount = new BankAccount(props, id);
+    const bankAccount = BankAccount.create(props, id);
 
     expect(bankAccount.id).toStrictEqual(id);
     expect(bankAccount.userId).toStrictEqual(props.userId);
@@ -31,7 +31,7 @@ describe('BankAccount', () => {
   });
 
   it('should update the current balance', () => {
-    const bankAccount = new BankAccount(props);
+    const bankAccount = BankAccount.create(props);
 
     const newValue = props.currentBalance.add(Money.createFromAmount(10, currency));
 
@@ -41,7 +41,7 @@ describe('BankAccount', () => {
   });
 
   it('should update the name', () => {
-    const bankAccount = new BankAccount(props);
+    const bankAccount = BankAccount.create(props);
     const newName = 'New Name';
     bankAccount.setName(newName);
 

@@ -1,4 +1,4 @@
-import { Money } from '../../valueObjects/Money';
+import { Money } from '../../value-objects/Money';
 import { Entity } from '@/domain/_shared/Entity';
 import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 
@@ -10,8 +10,12 @@ export interface BankAccountProps {
 }
 
 export class BankAccount extends Entity<BankAccountProps> {
-  constructor(props: BankAccountProps, id?: UniqueEntityId) {
+  private constructor(props: BankAccountProps, id?: UniqueEntityId) {
     super(props, id);
+  }
+
+  static create(props: BankAccountProps, id?: UniqueEntityId) {
+    return new BankAccount(props, id);
   }
 
   get name() {
