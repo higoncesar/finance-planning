@@ -1,6 +1,6 @@
 import { Money } from '../../valueObjects/Money';
-import { Entity } from '@/core/domain/_shared/Entity';
-import { UniqueEntityId } from '@/core/domain/_shared/UniqueEntityId';
+import { Entity } from '@/domain/_shared/Entity';
+import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 
 export interface BankAccountProps {
   name: string;

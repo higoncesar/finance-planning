@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Entity } from '..';
-import { UniqueEntityId } from '@/core/domain/_shared/UniqueEntityId';
+import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
 
 class FakeEntity extends Entity<{ name: string }> {
   get name() {

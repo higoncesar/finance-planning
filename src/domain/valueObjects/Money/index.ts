@@ -1,6 +1,6 @@
 // src/domain/value-objects/Money.ts
 import Dinero, { Currency, Dinero as DineroType } from 'dinero.js';
-import { ValueObject } from '@/core/domain/_shared/ValueObject';
+import { ValueObject } from '@/domain/_shared/ValueObject';
 
 export interface MoneyProps {
   amount: number;

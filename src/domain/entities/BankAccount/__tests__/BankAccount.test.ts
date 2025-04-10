@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { BankAccount, BankAccountProps } from '..';
-import { UniqueEntityId } from '@/core/domain/_shared/UniqueEntityId';
-import { Money } from '@/core/domain/valueObjects/Money';
+import { UniqueEntityId } from '@/domain/_shared/UniqueEntityId';
+import { Money } from '@/domain/valueObjects/Money';
 
 describe('BankAccount', () => {
   let props: BankAccountProps;
