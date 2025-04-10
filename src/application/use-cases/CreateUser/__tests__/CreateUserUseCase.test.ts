@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { CreateUserUseCase } from '../CreateUserUseCase';
-import { UserFactory } from '@/domain/core/factories/UserFactory';
 import { UserAlreadyExistsError } from '@/domain/exceptions/UserAlreadyExistsError';
+import { UserFactory } from '@/domain/factories/UserFactory';
 import { UserRepositoryMemory } from '@/infrastructure/database/repositories/memory/UserRepositoryMemory';
 
 describe('CreateUserUseCase', () => {

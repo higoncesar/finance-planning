@@ -1,6 +1,7 @@
 import { CreateUserDTO } from './CreateUserDTO';
 import { UserAlreadyExistsError } from './CreateUserErrors';
-import { UserFactory } from '@/domain/core/factories/UserFactory';
+import { PasswordService } from '@/application/services/PasswordService';
+import { UserFactory } from '@/domain/factories/UserFactory';
 import { IUserRepository } from '@/domain/repositories/IUserRepository';
 
 export class CreateUserUseCase {
@@ -13,7 +14,9 @@ export class CreateUserUseCase {
       throw new UserAlreadyExistsError(data.email);
     }
 
-    const user = await UserFactory.create(data);
+    const hashedPassword = await PasswordService.hash(data.password);
+
+    const user = await UserFactory.create({ ...data, password: hashedPassword });
 
     await this.userRepository.save(user);
   }
